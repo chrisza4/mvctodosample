@@ -13,5 +13,9 @@ namespace MvcTodo.Controllers {
             // Upper close should be replaced with internal system logics
             return View(todos);
         }
+
+        public IActionResult NewFeature() {
+            return View("New feature");
+        }
     }
 }
