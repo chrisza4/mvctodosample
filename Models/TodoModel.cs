@@ -10,6 +10,7 @@ namespace MvcTodo.Models {
     public class AuthModel {
         public string Username;
         public string Password;
+        public string Email;
     }
 
     public class UserModel {
