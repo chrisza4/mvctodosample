@@ -8,7 +8,14 @@ using MvcTodo.Models;
 
 namespace MvcTodo.Controllers {
   public class LoginController : Controller {
+
+    [HttpGet]
     public IActionResult Login() {
+      return View("Login");
+    }
+
+    [HttpPost]
+    public IActionResult PostLogin() {
       return View("Login");
     }
 
