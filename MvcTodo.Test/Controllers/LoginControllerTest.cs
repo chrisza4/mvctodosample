@@ -53,5 +53,17 @@ namespace MvcTodo.Test {
       Assert.Equal("Login", viewResult.ViewName);
       Assert.Equal("Please enter password", viewResult.ViewData["errorMessage"]);
     }
+
+    [Fact]
+    public void TestPostLoginInvalidAuthenticationShouldReturnErrorMessage() {
+      var mockLoginService = new Mock<IAuthService>();
+      mockLoginService.Setup(service => service.Login("test", "test")).Returns(false);
+      var controller = new LoginController(mockLoginService.Object);
+      var res = controller.PostLogin("test", "test");
+      Assert.IsType<ViewResult>(res);
+      var viewResult = res as ViewResult;
+      Assert.Equal("Login", viewResult.ViewName);
+      Assert.Equal("Invalid username or password", viewResult.ViewData["errorMessage"]);
+    }
   }
 }
