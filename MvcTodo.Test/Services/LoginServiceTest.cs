@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MvcTodo.Models;
 using MvcTodo.Services;
@@ -14,7 +15,7 @@ namespace MvcTodo.Test.Services {
       dbContext.Users.RemoveRange(dbContext.Users);
       dbContext.Users.Add(new User() {
         Username = "test",
-          Password = "test"
+          Password = new PasswordHasher<string>().HashPassword("test", "test")
       });
       dbContext.SaveChanges();
       this.service = new MvcTodo.Services.AuthService(repo);
