@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using MvcTodo.Repo;
+using MvcTodo.Utils;
 
 namespace MvcTodo.Services {
   public interface IAuthService {
@@ -19,8 +20,7 @@ namespace MvcTodo.Services {
       }
       var hasher = new PasswordHasher<string>();
 
-      var result = hasher.VerifyHashedPassword(user.Username, user.Password, password);
-      return result.HasFlag(PasswordVerificationResult.Success);
+      return PasswordUtils.Verify(user.Password, password);
     }
 
   }
