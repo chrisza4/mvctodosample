@@ -40,7 +40,7 @@ namespace MvcTodo {
             var connection = Configuration.GetConnectionString("maindb");
 
             services.AddDbContext<MvcTodoContext>
-                (options => options.UseSqlite(connection));
+                (options => options.UseSqlite(connection), ServiceLifetime.Singleton);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
